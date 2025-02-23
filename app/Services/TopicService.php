@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Topic;
 use App\Models\Subject;
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TopicService
@@ -55,5 +55,27 @@ class TopicService
         }
 
         return $topic;
+    }
+
+    public function getTopicsBySubject($subjectId)
+    {
+        $subject = Subject::find($subjectId);
+
+        if (!$subject) {
+            throw new ModelNotFoundException('Matéria não encontrada');
+        }
+
+        return $subject->topics()->whereNull('parent_id')->get();
+    }
+
+    public function getChildrenTopics($topicId)
+    {
+        $topic = Topic::find($topicId);
+
+        if (!$topic) {
+            throw new ModelNotFoundException('Tópico não encontrado');
+        }
+
+        return $topic->children()->orderBy('order')->get();
     }
 }

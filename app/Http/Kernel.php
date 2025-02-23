@@ -6,12 +6,6 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    /**
-     * Os middlewares globais da aplicação.
-     * Esses middlewares são executados em todas as requisições.
-     *
-     * @var array
-     */
     protected $middleware = [
         \Illuminate\Http\Middleware\HandleCors::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -20,11 +14,6 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class
     ];
 
-    /**
-     * Grupos de middlewares da aplicação.
-     *
-     * @var array
-     */
     protected $middlewareGroups = [
         'web' => [
             \Illuminate\Cookie\Middleware\EncryptCookies::class,
@@ -45,12 +34,6 @@ class Kernel extends HttpKernel
         ],
     ];
 
-    /**
-     * Middlewares individuais da aplicação.
-     * Esses middlewares podem ser atribuídos a rotas ou grupos de rotas.
-     *
-     * @var array
-     */
     protected $middlewareAliases = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

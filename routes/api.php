@@ -15,3 +15,4 @@ Route::middleware(['api', 'cors'])->group(function () {
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     });
 });
+
